@@ -7,6 +7,7 @@ TEST_URL = '/post/test'
 
 def test_base_route():
     app = Flask(__name__)
+    app.config['WTF_CSRF_ENABLED'] = False # Sensitive
     configure_routes(app)
     client = app.test_client()
     url = '/'
@@ -18,6 +19,7 @@ def test_base_route():
 
 def test_post_route__success():
     app = Flask(__name__)
+    app.config['WTF_CSRF_ENABLED'] = False # Sensitive
     configure_routes(app)
     client = app.test_client()
     url = TEST_URL
@@ -40,6 +42,7 @@ def test_post_route__success():
 
 def test_post_route__failure__unauthorized():
     app = Flask(__name__)
+    app.config['WTF_CSRF_ENABLED'] = False # Sensitive
     configure_routes(app)
     client = app.test_client()
     url = TEST_URL
@@ -60,6 +63,7 @@ def test_post_route__failure__unauthorized():
 
 def test_post_route__failure__bad_request():
     app = Flask(__name__)
+    app.config['WTF_CSRF_ENABLED'] = False # Sensitive
     configure_routes(app)
     client = app.test_client()
     url = TEST_URL
