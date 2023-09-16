@@ -3,6 +3,7 @@ import json
 
 from flask_pytest_example.handlers.routes import configure_routes
 
+TEST_URL = '/post/test'
 
 def test_base_route():
     app = Flask(__name__)
@@ -19,7 +20,7 @@ def test_post_route__success():
     app = Flask(__name__)
     configure_routes(app)
     client = app.test_client()
-    url = '/post/test'
+    url = TEST_URL
 
     mock_request_headers = {
         'authorization-sha256': '123'
@@ -41,7 +42,7 @@ def test_post_route__failure__unauthorized():
     app = Flask(__name__)
     configure_routes(app)
     client = app.test_client()
-    url = '/post/test'
+    url = TEST_URL
 
     mock_request_headers = {}
 
@@ -61,7 +62,7 @@ def test_post_route__failure__bad_request():
     app = Flask(__name__)
     configure_routes(app)
     client = app.test_client()
-    url = '/post/test'
+    url = TEST_URL
 
     mock_request_headers = {
         'authorization-sha256': '123'
